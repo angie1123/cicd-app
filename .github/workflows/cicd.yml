@@ -10,6 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Check secrets
+        run: |
+          if [ -z "${{ secrets.EMAIL_USERNAME }}" ]; then
+            echo "EMAIL_USERNAME is not set";
+          else
+            echo "EMAIL_USERNAME is set";
+          fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
